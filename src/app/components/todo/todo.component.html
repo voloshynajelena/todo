@@ -1,0 +1,27 @@
+<div class="todo-container">
+  <h1>Todo List</h1>
+
+  <div class="todo-input">
+    <mat-form-field class="example-form-field">
+      <input matInput
+             type="text"
+             [(ngModel)]="newTodo"
+             placeholder="Add a new task"
+      />
+    </mat-form-field>
+    <button mat-button (click)="addTodo()">Add</button>
+  </div>
+
+  <mat-list role="list">
+    <mat-list-item *ngFor="let todo of todos" [class.completed]="todo.completed">
+      <mat-checkbox
+        type="checkbox"
+        [checked]="todo.completed"
+        (change)="updateTodo(todo)"
+      >
+        <span>{{ todo.title }}</span>
+      </mat-checkbox>
+      <button mat-mini-fab (click)="deleteTodo(todo.id)"><mat-icon>delete</mat-icon></button>
+    </mat-list-item>
+  </mat-list>
+</div>
